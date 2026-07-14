@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" width="100%" height="100%">
+  <defs>
+    <!-- Card Background Gradient -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0a0f1d" />
+    </linearGradient>
+
+    <!-- Glowing effect -->
+    <filter id="cardGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&amp;family=Outfit:wght@400;600&amp;display=swap');
+    
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .font-code { font-family: 'Fira Code', monospace; }
+
+    .window-btn { transition: transform 0.2s; }
+    .window-btn:hover { transform: scale(1.2); }
+
+    /* Animated status pulse */
+    @keyframes statusPulse {
+      0%, 100% { fill: #34d399; opacity: 1; filter: drop-shadow(0 0 2px #34d399); }
+      50% { fill: #10b981; opacity: 0.4; filter: none; }
+    }
+    .status-dot {
+      animation: statusPulse 2s infinite;
+    }
+
+    /* Line highlight effect */
+    @keyframes lineGlow {
+      0%, 100% { opacity: 0.08; }
+      50% { opacity: 0.18; }
+    }
+    .line-highlight {
+      animation: lineGlow 3s ease-in-out infinite;
+    }
+
+    .key { fill: #f43f5e; font-weight: 500; }     /* Rose */
+    .string { fill: #34d399; }                  /* Emerald */
+    .number { fill: #fbbf24; }                  /* Amber */
+    .bracket-color { fill: #38bdf8; }           /* Cyan */
+    .punctuation { fill: #94a3b8; }             /* Slate */
+  </style>
+
+  <!-- Card Background -->
+  <rect width="500" height="240" rx="12" fill="url(#cardBg)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- VS Code Window Header -->
+  <rect width="500" height="35" rx="12" fill="#070a13" />
+  <!-- Crop bottom corners of header so they are square -->
+  <rect y="25" width="500" height="10" fill="#070a13" />
+
+  <!-- Window controls -->
+  <circle cx="20" cy="18" r="5" fill="#ef4444" class="window-btn" />
+  <circle cx="36" cy="18" r="5" fill="#eab308" class="window-btn" />
+  <circle cx="52" cy="18" r="5" fill="#22c55e" class="window-btn" />
+
+  <!-- Active Tab -->
+  <path d="M 80,35 L 95,12 L 215,12 L 230,35 Z" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+  <rect x="81" y="34" width="148" height="2" fill="#0f172a" /> <!-- mask tab line border -->
+  
+  <text x="112" y="25" fill="#94a3b8" class="font-code" font-size="11" font-weight="500">kusmayuda.json</text>
+  <!-- Small Close Icon in Tab -->
+  <text x="198" y="24" fill="#64748b" class="font-outfit" font-size="10">×</text>
+
+  <!-- Line highlighting row 4 (status) -->
+  <rect x="8" y="121" width="484" height="20" fill="#38bdf8" class="line-highlight" opacity="0.1" rx="4" />
+
+  <!-- Editor Content (JSON) -->
+  <g class="font-code" font-size="12.5" transform="translate(25, 65)">
+    <!-- Line numbers -->
+    <g fill="#475569" text-anchor="end" font-size="11.5">
+      <text x="-5" y="15">1</text>
+      <text x="-5" y="34">2</text>
+      <text x="-5" y="53">3</text>
+      <text x="-5" y="72">4</text>
+      <text x="-5" y="91">5</text>
+      <text x="-5" y="110">6</text>
+      <text x="-5" y="129">7</text>
+      <text x="-5" y="148">8</text>
+    </g>
+
+    <!-- JSON Structure -->
+    <!-- Line 1 -->
+    <text x="15" y="15" class="bracket-color">{</text>
+    
+    <!-- Line 2 -->
+    <text x="35" y="34">
+      <tspan class="key">"name"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Kusmayuda"</tspan><tspan class="punctuation">,</tspan>
+    </text>
+
+    <!-- Line 3 -->
+    <text x="35" y="53">
+      <tspan class="key">"role"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Web Developer"</tspan><tspan class="punctuation">,</tspan>
+    </text>
+
+    <!-- Line 4 -->
+    <text x="35" y="72">
+      <tspan class="key">"status"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Crafting modern web apps"</tspan><tspan class="punctuation">,</tspan>
+    </text>
+
+    <!-- Line 5 -->
+    <text x="35" y="91">
+      <tspan class="key">"location"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Indonesia"</tspan><tspan class="punctuation">,</tspan>
+    </text>
+
+    <!-- Line 6 -->
+    <text x="35" y="110">
+      <tspan class="key">"skills"</tspan><tspan class="punctuation">:</tspan> <tspan class="bracket-color">[</tspan><tspan class="string">"JS"</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"React"</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"Node.js"</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"CSS"</tspan><tspan class="bracket-color">]</tspan><tspan class="punctuation">,</tspan>
+    </text>
+
+    <!-- Line 7 -->
+    <text x="35" y="129">
+      <tspan class="key">"openToWork"</tspan><tspan class="punctuation">:</tspan> <tspan class="number">true</tspan>
+    </text>
+
+    <!-- Line 8 -->
+    <text x="15" y="148" class="bracket-color">}</text>
+  </g>
+
+  <!-- Live Status Badge on Bottom Right -->
+  <g transform="translate(360, 195)">
+    <rect width="115" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <circle cx="18" cy="14" r="4.5" class="status-dot" />
+    <text x="30" y="18" fill="#94a3b8" class="font-outfit" font-weight="600" font-size="10" letter-spacing="0.5">ACTIVE WORKER</text>
+  </g>
+</svg>
