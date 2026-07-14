@@ -1,324 +1,211 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 360" width="100%" height="100%">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#030712" />
-      <stop offset="50%" stop-color="#0c0a1c" />
-      <stop offset="100%" stop-color="#020408" />
+    <!-- Background Space Void Gradient -->
+    <linearGradient id="bgSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020205" />
+      <stop offset="60%" stop-color="#0a0817" />
+      <stop offset="100%" stop-color="#010103" />
     </linearGradient>
 
-    <!-- Text Metallic Neon Gradient -->
-    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#06b6d4" />  <!-- Cyan -->
-      <stop offset="40%" stop-color="#3b82f6" /> <!-- Blue -->
-      <stop offset="70%" stop-color="#a855f7" /> <!-- Purple -->
-      <stop offset="100%" stop-color="#ec4899" /> <!-- Pink -->
+    <!-- Metallic Chrome Gradient -->
+    <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#e2e8f0" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="55%" stop-color="#475569" />
+      <stop offset="85%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#ffffff" />
     </linearGradient>
 
     <!-- Glowing effect -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="8" result="blur" />
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
-    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="40" result="blur" />
+    <filter id="hyperGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="35" result="blur" />
     </filter>
   </defs>
 
   <style>
     <![CDATA[
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fira+Code:wght@500;700&display=swap');
     
     .font-outfit { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     .font-code { font-family: 'Fira Code', monospace; }
 
-    /* HUD Lines & Grid animations */
-    @keyframes gridScroll {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(40px); }
+    /* Ambient Auroras pulsing */
+    @keyframes aurora1 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.2; }
+      50% { transform: translate(50px, 20px) scale(1.15); opacity: 0.35; }
     }
-    .grid-overlay {
-      stroke: #1e1b4b;
-      stroke-width: 1;
-      opacity: 0.3;
-      animation: gridScroll 10s linear infinite;
+    @keyframes aurora2 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); opacity: 0.15; }
+      50% { transform: translate(-40px, -30px) scale(1.1); opacity: 0.3; }
     }
+    .aurora-cyan { animation: aurora1 14s ease-in-out infinite; }
+    .aurora-pink { animation: aurora2 12s ease-in-out infinite; }
 
-    /* Ambient Glowing Blobs */
-    @keyframes blobMove1 {
-      0%, 100% { cx: 200px; cy: 120px; opacity: 0.25; }
-      50% { cx: 250px; cy: 150px; opacity: 0.4; }
+    /* 3D Rotating Globe */
+    @keyframes globeRotate {
+      0% { transform: scaleX(1); }
+      50% { transform: scaleX(-1); }
+      100% { transform: scaleX(1); }
     }
-    @keyframes blobMove2 {
-      0%, 100% { cx: 650px; cy: 240px; opacity: 0.2; }
-      50% { cx: 600px; cy: 200px; opacity: 0.35; }
-    }
-    .blob-1 { animation: blobMove1 12s ease-in-out infinite; }
-    .blob-2 { animation: blobMove2 10s ease-in-out infinite; }
-
-    /* Neural network data links */
-    @keyframes dataStream {
-      to { stroke-dashoffset: -40; }
-    }
-    .data-link {
+    .globe-long {
+      fill: none;
       stroke: #38bdf8;
-      stroke-width: 1;
-      stroke-dasharray: 6 10;
-      opacity: 0.25;
-      animation: dataStream 4s linear infinite;
-    }
-    .data-link-pink {
-      stroke: #f472b6;
-      stroke-width: 1;
-      stroke-dasharray: 6 10;
-      opacity: 0.25;
-      animation: dataStream 5s linear infinite reverse;
+      stroke-width: 1.2;
+      opacity: 0.35;
+      animation: globeRotate 8s infinite linear;
+      transform-origin: 0px 0px;
     }
 
-    /* Node pulsing */
-    @keyframes pulseNode {
-      0%, 100% { r: 3px; fill: #38bdf8; opacity: 0.5; }
-      50% { r: 5px; fill: #ec4899; opacity: 0.9; filter: drop-shadow(0 0 3px #ec4899); }
+    /* Subtitle Slide-Up-Fade transition */
+    @keyframes slideUp1 {
+      0%, 100% { opacity: 0; transform: translateY(12px); }
+      5%, 28% { opacity: 1; transform: translateY(0); }
+      33%, 95% { opacity: 0; transform: translateY(-12px); }
     }
-    .node { animation: pulseNode 3s infinite ease-in-out; }
-    .node-delay1 { animation-delay: 1s; }
-    .node-delay2 { animation-delay: 2s; }
-
-    /* HUD elements rotating */
-    @keyframes rotateHUD {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes slideUp2 {
+      0%, 33.3%, 100% { opacity: 0; transform: translateY(12px); }
+      38.3%, 61.3% { opacity: 1; transform: translateY(0); }
+      66.3%, 95% { opacity: 0; transform: translateY(-12px); }
     }
-    .hud-spinner {
-      transform-origin: 750px 80px;
-      animation: rotateHUD 20s linear infinite;
-    }
-    .hud-spinner-reverse {
-      transform-origin: 100px 280px;
-      animation: rotateHUD 25s linear infinite reverse;
+    @keyframes slideUp3 {
+      0%, 66.6%, 100% { opacity: 0; transform: translateY(12px); }
+      71.6%, 94.6% { opacity: 1; transform: translateY(0); }
+      99.6% { opacity: 0; transform: translateY(-12px); }
     }
 
-    /* Subtitle Rotator via CSS scaleX */
-    @keyframes scaleText1 {
-      0%, 100% { transform: scaleX(0); }
-      10%, 27.5% { transform: scaleX(1); }
-      30% { transform: scaleX(0); }
-    }
-    @keyframes cursorX1 {
-      0%, 100% { transform: translateX(0); }
-      10%, 27.5% { transform: translateX(180px); }
-      30% { transform: translateX(0); }
-    }
-    #clipRect1 {
-      animation: scaleText1 12s infinite ease-in-out;
-      transform-origin: 0px 225px;
-    }
-    #cursor1 {
-      animation: cursorX1 12s infinite ease-in-out, cursorBlink 0.8s infinite;
-    }
+    .slide-text-1 { animation: slideUp1 12s infinite ease-in-out; }
+    .slide-text-2 { animation: slideUp2 12s infinite ease-in-out; }
+    .slide-text-3 { animation: slideUp3 12s infinite ease-in-out; }
 
-    @keyframes scaleText2 {
-      0%, 33.3%, 100% { transform: scaleX(0); }
-      43.3%, 60.8% { transform: scaleX(1); }
-      63.3% { transform: scaleX(0); }
-    }
-    @keyframes cursorX2 {
-      0%, 33.3%, 100% { transform: translateX(0); }
-      43.3%, 60.8% { transform: translateX(235px); }
-      63.3% { transform: translateX(0); }
-    }
-    #clipRect2 {
-      animation: scaleText2 12s infinite ease-in-out;
-      transform-origin: 0px 225px;
-    }
-    #cursor2 {
-      animation: cursorX2 12s infinite ease-in-out, cursorBlink 0.8s infinite;
-    }
-
-    @keyframes scaleText3 {
-      0%, 66.6%, 100% { transform: scaleX(0); }
-      76.6%, 94.1% { transform: scaleX(1); }
-      96.6% { transform: scaleX(0); }
-    }
-    @keyframes cursorX3 {
-      0%, 66.6%, 100% { transform: translateX(0); }
-      76.6%, 94.1% { transform: translateX(170px); }
-      96.6% { transform: translateX(0); }
-    }
-    #clipRect3 {
-      animation: scaleText3 12s infinite ease-in-out;
-      transform-origin: 0px 225px;
-    }
-    #cursor3 {
-      animation: cursorX3 12s infinite ease-in-out, cursorBlink 0.8s infinite;
-    }
-
-    @keyframes cursorBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* Subtle float for centerpiece */
-    @keyframes centerFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+    /* Smooth Float for Title Card */
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(0.5deg); }
     }
     .center-card {
-      animation: centerFloat 6s ease-in-out infinite;
-    }
-
-    /* Floating shapes */
-    @keyframes shapeFloat {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
-      50% { transform: translateY(-15px) rotate(15deg); opacity: 0.25; }
-    }
-    .floating-shape {
-      animation: shapeFloat 8s ease-in-out infinite;
+      animation: cardFloat 7s ease-in-out infinite;
       transform-origin: center;
     }
     ]]>
   </style>
 
-  <!-- Background -->
-  <rect width="850" height="360" rx="16" fill="url(#bgGrad)" stroke="#1e1b4b" stroke-width="1.5" />
+  <!-- Background Space Void -->
+  <rect width="850" height="360" rx="16" fill="url(#bgSpace)" stroke="#111827" stroke-width="1.5" />
 
-  <!-- Animated Grid Overlay -->
-  <g class="grid-overlay">
-    <path d="M 0,-40 L 850,-40 M 0,0 L 850,0 M 0,40 L 850,40 M 0,80 L 850,80 M 0,120 L 850,120 M 0,160 L 850,160 M 0,200 L 850,200 M 0,240 L 850,240 M 0,280 L 850,280 M 0,320 L 850,320 M 0,360 L 850,360 M 0,400 L 850,400" />
-    <path d="M 0,0 L 0,360 M 40,0 L 40,360 M 80,0 L 80,360 M 120,0 L 120,360 M 160,0 L 160,360 M 200,0 L 200,360 M 240,0 L 240,360 M 280,0 L 280,360 M 320,0 L 320,360 M 360,0 L 360,360 M 400,0 L 400,360 M 440,0 L 440,360 M 480,0 L 480,360 M 520,0 L 520,360 M 560,0 L 560,360 M 600,0 L 600,360 M 640,0 L 640,360 M 680,0 L 680,360 M 720,0 L 720,360 M 760,0 L 760,360 M 800,0 L 800,360 M 840,0 L 840,360" />
-  </g>
+  <!-- Ambient Glowing Auroras -->
+  <circle class="aurora-cyan" cx="150" cy="100" r="160" fill="#06b6d4" filter="url(#hyperGlow)" />
+  <circle class="aurora-pink" cx="700" cy="220" r="170" fill="#db2777" filter="url(#hyperGlow)" />
 
-  <!-- Glowing Ambient Blobs -->
-  <circle class="blob-1" cx="200" cy="120" r="130" fill="#3b82f6" filter="url(#softGlow)" />
-  <circle class="blob-2" cx="650" cy="240" r="140" fill="#db2777" filter="url(#softGlow)" />
-
-  <!-- Neural Net Left Group -->
-  <g>
-    <path class="data-link" d="M 50,80 L 140,60" />
-    <path class="data-link-pink" d="M 140,60 L 110,130" />
-    <path class="data-link" d="M 50,80 L 110,130" />
-    <path class="data-link-pink" d="M 110,130 L 60,180" />
-    <circle class="node" cx="50" cy="80" r="4" />
-    <circle class="node node-delay1" cx="140" cy="60" r="4" />
-    <circle class="node node-delay2" cx="110" cy="130" r="4" />
-    <circle class="node" cx="60" cy="180" r="4" />
-  </g>
-
-  <!-- Neural Net Right Group -->
-  <g>
-    <path class="data-link-pink" d="M 800,200 L 710,180" />
-    <path class="data-link" d="M 710,180 L 750,260" />
-    <path class="data-link-pink" d="M 800,200 L 750,260" />
-    <path class="data-link" d="M 750,260 L 790,300" />
-    <circle class="node node-delay2" cx="800" cy="200" r="4" />
-    <circle class="node" cx="710" cy="180" r="4" />
-    <circle class="node node-delay1" cx="750" cy="260" r="4" />
-    <circle class="node node-delay2" cx="790" cy="300" r="4" />
-  </g>
-
-  <!-- Floating Sci-fi Shapes -->
-  <g class="floating-shape" style="animation-delay: -2s;">
-    <polygon points="760,60 775,70 775,90 760,100 745,90 745,70" fill="none" stroke="#a855f7" stroke-width="1.5" />
-  </g>
-  <g class="floating-shape" style="animation-delay: -5s;">
-    <rect x="80" y="240" width="25" height="25" rx="4" fill="none" stroke="#06b6d4" stroke-width="1.5" transform="rotate(15 92 252)" />
-  </g>
-
-  <!-- HUD Corner Accents -->
-  <g stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.6">
-    <!-- Top-Left -->
-    <path d="M 20,40 L 20,20 L 40,20" />
-    <!-- Top-Right -->
-    <path d="M 830,40 L 830,20 L 810,20" />
-    <!-- Bottom-Left -->
-    <path d="M 20,320 L 20,340 L 40,340" />
-    <!-- Bottom-Right -->
-    <path d="M 830,320 L 830,340 L 810,340" />
-  </g>
-
-  <!-- HUD Spinner Top-Right -->
-  <g class="hud-spinner" opacity="0.4">
-    <circle cx="750" cy="80" r="25" fill="none" stroke="#3b82f6" stroke-dasharray="10 15" stroke-width="1.5" />
-    <circle cx="750" cy="80" r="18" fill="none" stroke="#06b6d4" stroke-dasharray="45 15" stroke-width="1" />
-  </g>
-  
-  <!-- HUD Spinner Bottom-Left -->
-  <g class="hud-spinner-reverse" opacity="0.4">
-    <circle cx="100" cy="280" r="20" fill="none" stroke="#a855f7" stroke-dasharray="8 8" stroke-width="1.5" />
-  </g>
-
-  <!-- HUD Stats Overlay (Ticking Info Indicators) -->
-  <g fill="#4b5563" class="font-code" font-size="9" opacity="0.7">
-    <text x="35" y="45">SYS_STATUS: ACTIVE</text>
-    <text x="35" y="60">NET_LATENCY: 12MS</text>
-    <text x="735" y="315">LOC: INDONESIA</text>
-    <text x="735" y="330">CORE: V8.3.1</text>
-  </g>
-
-  <!-- Centerpiece Glassmorphism Card -->
-  <g class="center-card" transform="translate(175, 55)">
-    <!-- Card shadow / Outer Glow -->
-    <rect x="-5" y="-5" width="510" height="260" rx="20" fill="#000" opacity="0.4" filter="url(#glow)" />
+  <!-- 3D Perspective Grid (fading into the void) -->
+  <g stroke="#1e1b4b" stroke-width="1" opacity="0.3">
+    <!-- Perspective lines radiating from vanishing point (425, -80) -->
+    <line x1="425" y1="-80" x2="-200" y2="360" />
+    <line x1="425" y1="-80" x2="-50" y2="360" />
+    <line x1="425" y1="-80" x2="100" y2="360" />
+    <line x1="425" y1="-80" x2="250" y2="360" />
+    <line x1="425" y1="-80" x2="400" y2="360" />
+    <line x1="425" y1="-80" x2="450" y2="360" />
+    <line x1="425" y1="-80" x2="600" y2="360" />
+    <line x1="425" y1="-80" x2="750" y2="360" />
+    <line x1="425" y1="-80" x2="900" y2="360" />
+    <line x1="425" y1="-80" x2="1050" y2="360" />
     
-    <!-- Glass Background -->
-    <rect width="500" height="250" rx="16" fill="#0b0f19" fill-opacity="0.75" stroke="#1e293b" stroke-width="1.5" />
+    <!-- Horizontal Perspective spacing lines -->
+    <line x1="0" y1="80" x2="850" y2="80" opacity="0.1" />
+    <line x1="0" y1="120" x2="850" y2="120" opacity="0.2" />
+    <line x1="0" y1="170" x2="850" y2="170" opacity="0.3" />
+    <line x1="0" y1="230" x2="850" y2="230" opacity="0.5" />
+    <line x1="0" y1="300" x2="850" y2="300" opacity="0.8" />
+  </g>
+
+  <!-- 3D ROTATING GLOBE (Right side) -->
+  <g transform="translate(680, 180) rotate(15)" opacity="0.8">
+    <!-- Globe Base Outer Rings -->
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#1e293b" stroke-width="1" />
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.35" filter="url(#neonGlow)" />
     
-    <!-- Inner Card Border Accent Line (Cyberpunk corner style) -->
-    <path d="M 15,10 L 485,10" stroke="#334155" stroke-width="1" stroke-opacity="0.5" />
-    <path d="M 490,15 L 490,235" stroke="#334155" stroke-width="1" stroke-opacity="0.5" />
+    <!-- Horizontal Latitudes -->
+    <ellipse cx="0" cy="-45" rx="60" ry="14" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3" />
+    <ellipse cx="0" cy="-22" rx="71" ry="17" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3" />
+    <ellipse cx="0" cy="0" rx="75" ry="19" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3" />
+    <ellipse cx="0" cy="22" rx="71" ry="17" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3" />
+    <ellipse cx="0" cy="45" rx="60" ry="14" fill="none" stroke="#38bdf8" stroke-width="0.8" opacity="0.3" />
 
-    <!-- HUD Crosshairs inside card -->
-    <path d="M 12,238 L 22,238 M 17,233 L 17,243" stroke="#06b6d4" stroke-width="1" opacity="0.6" />
-    <path d="M 488,12 L 478,12 M 483,7 L 483,17" stroke="#ec4899" stroke-width="1" opacity="0.6" />
+    <!-- Rotating Vertical Longitudes (staggered delay CSS transforms) -->
+    <ellipse cx="0" cy="0" rx="75" ry="75" class="globe-long" style="animation-delay: 0s;" />
+    <ellipse cx="0" cy="0" rx="75" ry="75" class="globe-long" style="animation-delay: -2s;" />
+    <ellipse cx="0" cy="0" rx="75" ry="75" class="globe-long" style="animation-delay: -4s;" />
+    <ellipse cx="0" cy="0" rx="75" ry="75" class="globe-long" style="animation-delay: -6s;" />
+  </g>
 
-    <!-- Profile Text inside card -->
+  <!-- HUD Widescreen Accents & Crosshairs -->
+  <g stroke="#334155" stroke-width="1" fill="none" opacity="0.5">
+    <circle cx="70" cy="70" r="10" />
+    <line x1="70" y1="55" x2="70" y2="85" />
+    <line x1="55" y1="70" x2="85" y2="70" />
+    <path d="M 30,30 L 15,30 M 15,30 L 15,45" stroke="#0ea5e9" stroke-width="1.5" />
+    <path d="M 820,30 L 835,30 M 835,30 L 835,45" stroke="#f43f5e" stroke-width="1.5" />
+  </g>
+
+  <!-- CENTERPIECE: Translucent Obsidian Title Card -->
+  <g class="center-card" transform="translate(130, 55)">
+    <!-- Deep Card Shadow -->
+    <rect x="-8" y="-8" width="466" height="266" rx="22" fill="#000" opacity="0.6" filter="url(#neonGlow)" />
+    
+    <!-- Obsidian Panel Frame -->
+    <rect width="450" height="250" rx="16" fill="#04060c" fill-opacity="0.8" stroke="#1f2937" stroke-width="1.5" />
+    <!-- Cyberpunk Corner Accents on Card -->
+    <path d="M 0,20 L 20,0 M 450,230 L 430,250" stroke="#374151" stroke-width="1.5" />
+
+    <!-- Glow bars on top/bottom of panel -->
+    <rect x="30" y="0" width="390" height="2" rx="1" fill="url(#chromeGrad)" opacity="0.8" />
+    
     <g transform="translate(45, 0)">
-      <!-- Greeting label -->
-      <text x="0" y="80" fill="#94a3b8" class="font-outfit" font-weight="600" font-size="14" letter-spacing="3">
-        SYSTEM.DEVELOPER_PORTAL_
+      <!-- Label -->
+      <text x="0" y="70" fill="#4b5563" class="font-code" font-weight="700" font-size="11" letter-spacing="4">
+        ACCESS_CODE::SECURE_PORTAL_
       </text>
 
-      <!-- Main Name with Neon Gradient Glow -->
-      <text x="0" y="145" fill="url(#neonGrad)" class="font-outfit" font-weight="800" font-size="56" filter="url(#glow)">
+      <!-- Elite Silver Name -->
+      <text x="0" y="140" fill="url(#chromeGrad)" class="font-outfit" font-weight="800" font-size="58" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.8))">
         Kusmayuda
       </text>
 
-      <!-- Custom CSS Animated Monospace Subtitles -->
-      <!-- Subtitle 1: Web Developer -->
-      <g class="phrase p1">
-        <clipPath id="clip1">
-          <rect id="clipRect1" x="0" y="165" width="200" height="50" />
-        </clipPath>
-        <text x="0" y="198" fill="#f8fafc" class="font-code" font-size="19" font-weight="700" clip-path="url(#clip1)">
-          &gt; [ WEB DEVELOPER ]
-        </text>
-        <rect id="cursor1" x="18" y="180" width="3" height="20" fill="#06b6d4" />
-      </g>
-
-      <!-- Subtitle 2: Frontend Architect -->
-      <g class="phrase p2">
-        <clipPath id="clip2">
-          <rect id="clipRect2" x="0" y="165" width="260" height="50" />
-        </clipPath>
-        <text x="0" y="198" fill="#3b82f6" class="font-code" font-size="19" font-weight="700" clip-path="url(#clip2)">
-          &gt; [ FRONTEND ARCHITECT ]
-        </text>
-        <rect id="cursor2" x="18" y="180" width="3" height="20" fill="#3b82f6" />
-      </g>
-
-      <!-- Subtitle 3: Creative Coder -->
-      <g class="phrase p3">
-        <clipPath id="clip3">
-          <rect id="clipRect3" x="0" y="165" width="200" height="50" />
-        </clipPath>
-        <text x="0" y="198" fill="#ec4899" class="font-code" font-size="19" font-weight="700" clip-path="url(#clip3)">
-          &gt; [ CREATIVE CODER ]
-        </text>
-        <rect id="cursor3" x="18" y="180" width="3" height="20" fill="#ec4899" />
+      <!-- Smooth Slide-Up Subtitle Stack -->
+      <g transform="translate(0, 195)">
+        <!-- Slide 1 -->
+        <g class="slide-text-1">
+          <text x="0" y="0" fill="#06b6d4" class="font-code" font-size="18" font-weight="700" filter="url(#neonGlow)">
+            &gt; [ WEB ARCHITECT ]
+          </text>
+        </g>
+        <!-- Slide 2 -->
+        <g class="slide-text-2">
+          <text x="0" y="0" fill="#6366f1" class="font-code" font-size="18" font-weight="700" filter="url(#neonGlow)">
+            &gt; [ FRONTEND ENGINEER ]
+          </text>
+        </g>
+        <!-- Slide 3 -->
+        <g class="slide-text-3">
+          <text x="0" y="0" fill="#ec4899" class="font-code" font-size="18" font-weight="700" filter="url(#neonGlow)">
+            &gt; [ CREATIVE CODER ]
+          </text>
+        </g>
       </g>
     </g>
+
+    <!-- Interactive Status Dot inside Card -->
+    <circle cx="25" cy="225" r="4.5" fill="#10b981" filter="url(#neonGlow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="40" y="228" fill="#4b5563" class="font-code" font-size="9">NODE_01//STABLE</text>
   </g>
 </svg>

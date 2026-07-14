@@ -2,8 +2,8 @@
   <defs>
     <!-- Glass Gradients -->
     <linearGradient id="glassBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0b1120" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#060814" stop-opacity="0.9" />
+      <stop offset="0%" stop-color="#04060c" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#020306" stop-opacity="0.95" />
     </linearGradient>
 
     <!-- Glowing filters -->
@@ -50,9 +50,9 @@
     .float-2 { animation: floatDown 4.5s ease-in-out infinite; }
     .float-3 { animation: floatUp 5s ease-in-out infinite; }
 
-    /* Glowing Hover Panel Effect (simulation via pulsing borders) */
+    /* Pulsing Obsidian Borders */
     @keyframes borderPulse {
-      0%, 100% { stroke: #1e293b; }
+      0%, 100% { stroke: #1f2937; }
       50% { stroke: #312e81; }
     }
     .glass-card {
@@ -66,22 +66,26 @@
   <!-- PANEL 1: FRONTEND (Left) -->
   <g transform="translate(15, 10)">
     <!-- Glass Panel Background -->
-    <rect class="glass-card" width="370" height="175" rx="16" stroke="#1e293b" />
+    <rect class="glass-card" width="370" height="175" rx="16" stroke="#1f2937" />
     
+    <!-- HUD corner ticks inside card -->
+    <path d="M 8,20 L 8,8 L 20,8" stroke="#0ea5e9" stroke-width="1.2" fill="none" opacity="0.4" />
+    <path d="M 362,155 L 362,167 L 350,167" stroke="#0ea5e9" stroke-width="1.2" fill="none" opacity="0.4" />
+
     <!-- Title -->
-    <text x="25" y="35" fill="#94a3b8" class="font-outfit" font-weight="800" font-size="12" letter-spacing="1.5">01 // FRONTEND</text>
+    <text x="25" y="32" fill="#4b5563" class="font-code" font-weight="700" font-size="10" letter-spacing="2">01 // FE_ENG_CORE</text>
     
     <!-- Tech Names Labels -->
-    <g fill="#475569" class="font-code" font-size="9" transform="translate(25, 60)">
+    <g fill="#374151" class="font-code" font-size="9" transform="translate(25, 55)">
       <text x="0" y="0">REACT</text>
       <text x="65" y="0">JS_ES6</text>
       <text x="130" y="0">TYPESCRIPT</text>
-      <text x="200" y="0">NEXT.JS</text>
+      <text x="200" y="0">NEXTJS</text>
       <text x="260" y="0">TAILWIND</text>
     </g>
 
     <!-- Animated Icons Grid -->
-    <!-- React (Float 1) -->
+    <!-- React -->
     <g class="float-1" transform="translate(40, 110)" filter="url(#cyanGlow)">
       <ellipse rx="16" ry="6" fill="none" stroke="#00d8ff" stroke-width="1.5" />
       <ellipse rx="16" ry="6" fill="none" stroke="#00d8ff" stroke-width="1.5" transform="rotate(60)" />
@@ -89,25 +93,25 @@
       <circle r="3" fill="#00d8ff" />
     </g>
 
-    <!-- JavaScript (Float 2) -->
+    <!-- JavaScript -->
     <g class="float-2" transform="translate(105, 110)">
       <rect x="-14" y="-14" width="28" height="28" rx="4" fill="#f7df1e" />
       <text x="3" y="9" fill="#000000" class="font-outfit" font-weight="800" font-size="12" text-anchor="middle">JS</text>
     </g>
 
-    <!-- TypeScript (Float 3) -->
+    <!-- TypeScript -->
     <g class="float-3" transform="translate(175, 110)">
       <rect x="-14" y="-14" width="28" height="28" rx="4" fill="#007acc" />
       <text x="3" y="9" fill="#ffffff" class="font-outfit" font-weight="800" font-size="12" text-anchor="middle">TS</text>
     </g>
 
-    <!-- Next.js (Float 1) -->
+    <!-- Next.js -->
     <g class="float-1" transform="translate(245, 110)">
       <circle r="15" fill="#000000" stroke="#f8fafc" stroke-width="1.5" />
       <text x="0" y="5" fill="#ffffff" class="font-outfit" font-weight="800" font-size="15" text-anchor="middle">N</text>
     </g>
 
-    <!-- Tailwind CSS (Float 2) -->
+    <!-- Tailwind CSS -->
     <g class="float-2" transform="translate(315, 110)" filter="url(#cyanGlow)">
       <path d="M -15,0 C -7.5,-12 0,-12 7.5,0 C 15,12 22.5,12 30,0" fill="none" stroke="#38bdf8" stroke-width="2.5" />
       <path d="M -30,0 C -22.5,-12 -15,-12 -7.5,0 C 0,12 7.5,12 15,0" fill="none" stroke="#38bdf8" stroke-width="2.5" />
@@ -117,25 +121,29 @@
   <!-- PANEL 2: BACKEND (Center) -->
   <g transform="translate(400, 10)">
     <!-- Glass Panel Background -->
-    <rect class="glass-card" width="210" height="175" rx="16" stroke="#1e293b" />
+    <rect class="glass-card" width="210" height="175" rx="16" stroke="#1f2937" />
     
+    <!-- HUD corner ticks inside card -->
+    <path d="M 8,20 L 8,8 L 20,8" stroke="#818cf8" stroke-width="1.2" fill="none" opacity="0.4" />
+    <path d="M 202,155 L 202,167 L 190,167" stroke="#818cf8" stroke-width="1.2" fill="none" opacity="0.4" />
+
     <!-- Title -->
-    <text x="25" y="35" fill="#94a3b8" class="font-outfit" font-weight="800" font-size="12" letter-spacing="1.5">02 // BACKEND</text>
+    <text x="25" y="32" fill="#4b5563" class="font-code" font-weight="700" font-size="10" letter-spacing="2">02 // BE_SRV_NODE</text>
 
     <!-- Tech Names Labels -->
-    <g fill="#475569" class="font-code" font-size="9" transform="translate(25, 60)">
+    <g fill="#374151" class="font-code" font-size="9" transform="translate(25, 55)">
       <text x="15" y="0">NODEJS</text>
       <text x="95" y="0">EXPRESS</text>
     </g>
 
     <!-- Animated Icons Grid -->
-    <!-- Node.js (Float 2) -->
+    <!-- Node.js -->
     <g class="float-2" transform="translate(70, 110)" filter="url(#greenGlow)">
       <polygon points="0,-16 14,-8 14,8 0,16 -14,8 -14,-8" fill="none" stroke="#22c55e" stroke-width="2" />
       <circle r="4" fill="#22c55e" />
     </g>
 
-    <!-- Express.js (Float 3) -->
+    <!-- Express.js -->
     <g class="float-3" transform="translate(145, 110)">
       <circle r="15" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
       <text x="0" y="5" fill="#38bdf8" class="font-code" font-weight="700" font-size="11" text-anchor="middle">ex</text>
@@ -145,26 +153,30 @@
   <!-- PANEL 3: DATABASES & TOOLS (Right) -->
   <g transform="translate(625, 10)">
     <!-- Glass Panel Background -->
-    <rect class="glass-card" width="210" height="175" rx="16" stroke="#1e293b" />
+    <rect class="glass-card" width="210" height="175" rx="16" stroke="#1f2937" />
     
+    <!-- HUD corner ticks inside card -->
+    <path d="M 8,20 L 8,8 L 20,8" stroke="#ec4899" stroke-width="1.2" fill="none" opacity="0.4" />
+    <path d="M 202,155 L 202,167 L 190,167" stroke="#ec4899" stroke-width="1.2" fill="none" opacity="0.4" />
+
     <!-- Title -->
-    <text x="25" y="35" fill="#94a3b8" class="font-outfit" font-weight="800" font-size="12" letter-spacing="1.5">03 // STACK.DB</text>
+    <text x="25" y="32" fill="#4b5563" class="font-code" font-weight="700" font-size="10" letter-spacing="2">03 // INFR_DB_TOOL</text>
 
     <!-- Tech Names Labels -->
-    <g fill="#475569" class="font-code" font-size="9" transform="translate(20, 60)">
+    <g fill="#374151" class="font-code" font-size="9" transform="translate(20, 55)">
       <text x="0" y="0">POSTGRES</text>
       <text x="75" y="0">GIT</text>
       <text x="125" y="0">FIGMA</text>
     </g>
 
     <!-- Animated Icons Grid -->
-    <!-- PostgreSQL (Float 3) -->
+    <!-- PostgreSQL -->
     <g class="float-3" transform="translate(45, 110)" filter="url(#purpleGlow)">
       <circle r="15" fill="#316192" stroke="#4f46e5" stroke-width="1.5" />
       <text x="0" y="5" fill="#ffffff" class="font-outfit" font-weight="800" font-size="11" text-anchor="middle">PG</text>
     </g>
 
-    <!-- Git (Float 1) -->
+    <!-- Git -->
     <g class="float-1" transform="translate(110, 110)">
       <rect x="-11" y="-11" width="22" height="22" fill="none" stroke="#f05033" stroke-width="2" transform="rotate(45)" />
       <circle cx="-3" cy="3" r="2.5" fill="#f05033" />
@@ -172,9 +184,8 @@
       <line x1="-3" y1="3" x2="3" y2="-3" stroke="#f05033" stroke-width="1.5" />
     </g>
 
-    <!-- Figma (Float 2) -->
+    <!-- Figma -->
     <g class="float-2" transform="translate(170, 110)">
-      <!-- Figma stylized logo dots -->
       <circle cx="-5" cy="-8" r="5" fill="#f24e1e" />
       <circle cx="5" cy="-8" r="5" fill="#ff7262" />
       <circle cx="-5" cy="2" r="5" fill="#a259ff" />

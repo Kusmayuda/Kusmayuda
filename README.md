@@ -45,16 +45,16 @@ My live system contributions and statistics pulled directly from GitHub:
 
 <p align="left">
   <a href="https://github.com/kusmayuda">
-    <img src="https://github-readme-stats.vercel.app/api?username=kusmayuda&show_icons=true&theme=dark&bg_color=030712&title_color=06b6d4&text_color=94a3b8&icon_color=a855f7&border_color=1e293b" alt="Kusmayuda's GitHub Stats" width="49%">
+    <img src="https://github-readme-stats.vercel.app/api?username=kusmayuda&show_icons=true&theme=dark&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=a855f7&border_color=1f2937" alt="Kusmayuda's GitHub Stats" width="49%">
   </a>
   <a href="https://github.com/kusmayuda">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kusmayuda&layout=compact&theme=dark&bg_color=030712&title_color=06b6d4&text_color=94a3b8&icon_color=a855f7&border_color=1e293b" alt="Kusmayuda's Top Languages" width="49%">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kusmayuda&layout=compact&theme=dark&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=a855f7&border_color=1f2937" alt="Kusmayuda's Top Languages" width="49%">
   </a>
 </p>
 
 <p align="left">
   <a href="https://github.com/kusmayuda">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=kusmayuda&theme=dark&background=030712&ring=a855f7&fire=06b6d4&currStreakNum=f8fafc&sideNums=94a3b8&sideLabels=94a3b8&dates=64748b&stroke=1e293b" alt="Kusmayuda's GitHub Streak" width="98%">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=kusmayuda&theme=dark&background=020205&ring=a855f7&fire=06b6d4&currStreakNum=f8fafc&sideNums=94a3b8&sideLabels=94a3b8&dates=64748b&stroke=1f2937" alt="Kusmayuda's GitHub Streak" width="98%">
   </a>
 </p>
 
