@@ -28,7 +28,8 @@
   </defs>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&amp;family=Fira+Code:wght@400;500&amp;display=swap');
+    <![CDATA[
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap');
     
     .font-outfit { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     .font-code { font-family: 'Fira Code', monospace; }
@@ -102,6 +103,62 @@
       opacity: 0.25;
       animation: gridMove 12s linear infinite;
     }
+
+    /* Pure CSS clip-path scaling and cursor translations */
+    @keyframes scale1 {
+      0%, 100% { transform: scaleX(0); }
+      10%, 27.5% { transform: scaleX(1); }
+      30% { transform: scaleX(0); }
+    }
+    @keyframes cursor1 {
+      0%, 100% { transform: translateX(0); }
+      10%, 27.5% { transform: translateX(165px); }
+      30% { transform: translateX(0); }
+    }
+    #clipRect1 {
+      animation: scale1 12s infinite ease-in-out;
+      transform-origin: 0px 190px;
+    }
+    #cursor1 {
+      animation: cursor1 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+    }
+
+    @keyframes scale2 {
+      0%, 33.3%, 100% { transform: scaleX(0); }
+      43.3%, 60.8% { transform: scaleX(1); }
+      63.3% { transform: scaleX(0); }
+    }
+    @keyframes cursor2 {
+      0%, 33.3%, 100% { transform: translateX(0); }
+      43.3%, 60.8% { transform: translateX(230px); }
+      63.3% { transform: translateX(0); }
+    }
+    #clipRect2 {
+      animation: scale2 12s infinite ease-in-out;
+      transform-origin: 0px 190px;
+    }
+    #cursor2 {
+      animation: cursor2 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+    }
+
+    @keyframes scale3 {
+      0%, 66.6%, 100% { transform: scaleX(0); }
+      76.6%, 94.1% { transform: scaleX(1); }
+      96.6% { transform: scaleX(0); }
+    }
+    @keyframes cursor3 {
+      0%, 66.6%, 100% { transform: translateX(0); }
+      76.6%, 94.1% { transform: translateX(180px); }
+      96.6% { transform: translateX(0); }
+    }
+    #clipRect3 {
+      animation: scale3 12s infinite ease-in-out;
+      transform-origin: 0px 190px;
+    }
+    #cursor3 {
+      animation: cursor3 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+    }
+    ]]>
   </style>
 
   <!-- Background Rect -->
@@ -121,11 +178,11 @@
 
   <!-- Code Decorators in Background (Floating) -->
   <g class="floating-1">
-    <text x="80" y="80" fill="#38bdf8" opacity="0.2" class="font-code" font-size="24">&lt;code&gt;</text>
+    <text x="80" y="80" fill="#38bdf8" opacity="0.2" class="font-code" font-size="20">const dev = true;</text>
     <text x="720" y="90" fill="#c084fc" opacity="0.15" class="font-code" font-size="32">{}</text>
   </g>
   <g class="floating-2">
-    <text x="730" y="240" fill="#38bdf8" opacity="0.15" class="font-code" font-size="20">&lt;/&gt;</text>
+    <text x="710" y="240" fill="#38bdf8" opacity="0.15" class="font-code" font-size="18">{} // developer</text>
     <text x="120" y="250" fill="#818cf8" opacity="0.2" class="font-code" font-size="26">[]</text>
     <circle cx="520" cy="70" r="4" fill="#34d399" opacity="0.3" />
     <circle cx="340" cy="260" r="6" fill="#fbbf24" opacity="0.2" />
@@ -144,52 +201,40 @@
     </text>
 
     <!-- Subtitle (Animated Typing) -->
-    <!-- Phase 1: Web Developer (0s - 4s of the 12s cycle) -->
+    <!-- Phase 1: Web Developer -->
     <g class="phrase p1">
       <clipPath id="clip1">
-        <rect x="0" y="175" width="0" height="45">
-          <animate attributeName="width" values="0; 200; 200; 0; 0" keyTimes="0; 0.1; 0.275; 0.3; 1" dur="12s" repeatCount="indefinite" />
-        </rect>
+        <rect id="clipRect1" x="0" y="175" width="200" height="45" />
       </clipPath>
       <text x="0" y="212" fill="#f8fafc" class="font-code" font-size="20" font-weight="500" clip-path="url(#clip1)">
         &gt; Web Developer
       </text>
       <!-- Cursor 1 -->
-      <rect x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor">
-        <animate attributeName="x" values="15; 180; 180; 15; 15" keyTimes="0; 0.1; 0.275; 0.3; 1" dur="12s" repeatCount="indefinite" />
-      </rect>
+      <rect id="cursor1" x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor" />
     </g>
 
-    <!-- Phase 2: Frontend Architect (4s - 8s of the 12s cycle) -->
+    <!-- Phase 2: Frontend Architect -->
     <g class="phrase p2">
       <clipPath id="clip2">
-        <rect x="0" y="175" width="0" height="45">
-          <animate attributeName="width" values="0; 0; 260; 260; 0; 0" keyTimes="0; 0.333; 0.433; 0.608; 0.633; 1" dur="12s" repeatCount="indefinite" />
-        </rect>
+        <rect id="clipRect2" x="0" y="175" width="260" height="45" />
       </clipPath>
       <text x="0" y="212" fill="#38bdf8" class="font-code" font-size="20" font-weight="500" clip-path="url(#clip2)">
         &gt; Frontend Architect
       </text>
       <!-- Cursor 2 -->
-      <rect x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor">
-        <animate attributeName="x" values="15; 15; 245; 245; 15; 15" keyTimes="0; 0.333; 0.433; 0.608; 0.633; 1" dur="12s" repeatCount="indefinite" />
-      </rect>
+      <rect id="cursor2" x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor" />
     </g>
 
-    <!-- Phase 3: Problem Solver (8s - 12s of the 12s cycle) -->
+    <!-- Phase 3: Problem Solver -->
     <g class="phrase p3">
       <clipPath id="clip3">
-        <rect x="0" y="175" width="0" height="45">
-          <animate attributeName="width" values="0; 0; 210; 210; 0; 0" keyTimes="0; 0.666; 0.766; 0.941; 0.966; 1" dur="12s" repeatCount="indefinite" />
-        </rect>
+        <rect id="clipRect3" x="0" y="175" width="210" height="45" />
       </clipPath>
       <text x="0" y="212" fill="#c084fc" class="font-code" font-size="20" font-weight="500" clip-path="url(#clip3)">
         &gt; Problem Solver
       </text>
       <!-- Cursor 3 -->
-      <rect x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor">
-        <animate attributeName="x" values="15; 15; 195; 195; 15; 15" keyTimes="0; 0.666; 0.766; 0.941; 0.966; 1" dur="12s" repeatCount="indefinite" />
-      </rect>
+      <rect id="cursor3" x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor" />
     </g>
     
     <!-- Short intro description in SVG -->
