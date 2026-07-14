@@ -2,13 +2,20 @@
   <defs>
     <!-- Card Background Gradient -->
     <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="0%" stop-color="#070b19" />
       <stop offset="100%" stop-color="#0a0f1d" />
     </linearGradient>
 
-    <!-- Glowing effect -->
-    <filter id="cardGlow" x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur stdDeviation="5" result="blur" />
+    <!-- Glowing effects -->
+    <filter id="neonBlue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="neonPink" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
@@ -17,46 +24,60 @@
   </defs>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&amp;family=Outfit:wght@400;600&amp;display=swap');
+    <![CDATA[
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@400;600&display=swap');
     
     .font-outfit { font-family: 'Outfit', sans-serif; }
     .font-code { font-family: 'Fira Code', monospace; }
 
+    /* Window controls hover animation */
     .window-btn { transition: transform 0.2s; }
     .window-btn:hover { transform: scale(1.2); }
 
-    /* Animated status pulse */
-    @keyframes statusPulse {
-      0%, 100% { fill: #34d399; opacity: 1; filter: drop-shadow(0 0 2px #34d399); }
-      50% { fill: #10b981; opacity: 0.4; filter: none; }
+    /* Equalizer Bouncing Bars (aligned bottom at y=160) */
+    @keyframes eq1 { 0%, 100% { height: 15px; y: 145px; } 50% { height: 40px; y: 120px; } }
+    @keyframes eq2 { 0%, 100% { height: 45px; y: 115px; } 50% { height: 20px; y: 140px; } }
+    @keyframes eq3 { 0%, 100% { height: 25px; y: 135px; } 50% { height: 55px; y: 105px; } }
+    @keyframes eq4 { 0%, 100% { height: 50px; y: 110px; } 50% { height: 30px; y: 130px; } }
+    @keyframes eq5 { 0%, 100% { height: 20px; y: 140px; } 50% { height: 45px; y: 115px; } }
+
+    .bar-1 { animation: eq1 1.8s infinite ease-in-out; }
+    .bar-2 { animation: eq2 2.2s infinite ease-in-out; }
+    .bar-3 { animation: eq3 1.5s infinite ease-in-out; }
+    .bar-4 { animation: eq4 2s infinite ease-in-out; }
+    .bar-5 { animation: eq5 1.7s infinite ease-in-out; }
+
+    /* Waveform Scroll Animation */
+    @keyframes waveScroll {
+      to { stroke-dashoffset: -20; }
     }
-    .status-dot {
-      animation: statusPulse 2s infinite;
+    .wave-line {
+      stroke-dasharray: 4 4;
+      animation: waveScroll 1.5s linear infinite;
     }
 
-    /* Line highlight effect */
-    @keyframes lineGlow {
-      0%, 100% { opacity: 0.08; }
-      50% { opacity: 0.18; }
+    /* Terminal Blinking Cursor */
+    @keyframes terminalCursor {
+      50% { opacity: 0; }
     }
-    .line-highlight {
-      animation: lineGlow 3s ease-in-out infinite;
-    }
+    .term-cursor { animation: terminalCursor 0.8s step-end infinite; }
 
-    .key { fill: #f43f5e; font-weight: 500; }     /* Rose */
-    .string { fill: #34d399; }                  /* Emerald */
-    .number { fill: #fbbf24; }                  /* Amber */
-    .bracket-color { fill: #38bdf8; }           /* Cyan */
-    .punctuation { fill: #94a3b8; }             /* Slate */
+    /* Live pulse health node */
+    @keyframes healthPulse {
+      0%, 100% { fill: #10b981; opacity: 0.5; filter: none; }
+      50% { fill: #34d399; opacity: 1; filter: drop-shadow(0 0 2px #34d399); }
+    }
+    .health-node { animation: healthPulse 2s infinite ease-in-out; }
+    ]]>
   </style>
 
-  <!-- Card Background -->
-  <rect width="500" height="240" rx="12" fill="url(#cardBg)" stroke="#1e293b" stroke-width="1.5" />
+  <!-- Card Border & Background -->
+  <rect width="500" height="240" rx="14" fill="url(#cardBg)" stroke="#1e293b" stroke-width="1.5" />
 
-  <!-- VS Code Window Header -->
-  <rect width="500" height="35" rx="12" fill="#070a13" />
-  <!-- Crop bottom corners of header so they are square -->
-  <rect y="25" width="500" height="10" fill="#070a13" />
+  <!-- Window Header -->
+  <rect width="500" height="35" rx="14" fill="#04060c" />
+  <!-- Crop bottom corners of header -->
+  <rect y="25" width="500" height="10" fill="#04060c" />
 
   <!-- Window controls -->
   <circle cx="20" cy="18" r="5" fill="#ef4444" class="window-btn" />
@@ -64,72 +85,65 @@
   <circle cx="52" cy="18" r="5" fill="#22c55e" class="window-btn" />
 
   <!-- Active Tab -->
-  <path d="M 80,35 L 95,12 L 215,12 L 230,35 Z" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
-  <rect x="81" y="34" width="148" height="2" fill="#0f172a" /> <!-- mask tab line border -->
+  <path d="M 80,35 L 95,12 L 235,12 L 250,35 Z" fill="#070b19" stroke="#1e293b" stroke-width="1" />
+  <rect x="81" y="34" width="168" height="2" fill="#070b19" /> <!-- mask tab line border -->
   
-  <text x="112" y="25" fill="#94a3b8" class="font-code" font-size="11" font-weight="500">kusmayuda.json</text>
-  <!-- Small Close Icon in Tab -->
-  <text x="198" y="24" fill="#64748b" class="font-outfit" font-size="10">×</text>
+  <text x="110" y="25" fill="#94a3b8" class="font-code" font-size="11" font-weight="500">system_monitor.sh</text>
+  <!-- Tab Close Icon -->
+  <text x="218" y="24" fill="#64748b" class="font-outfit" font-size="10">×</text>
 
-  <!-- Line highlighting row 4 (status) -->
-  <rect x="8" y="121" width="484" height="20" fill="#38bdf8" class="line-highlight" opacity="0.1" rx="4" />
-
-  <!-- Editor Content (JSON) -->
-  <g class="font-code" font-size="12.5" transform="translate(25, 65)">
-    <!-- Line numbers -->
-    <g fill="#475569" text-anchor="end" font-size="11.5">
-      <text x="-5" y="15">1</text>
-      <text x="-5" y="34">2</text>
-      <text x="-5" y="53">3</text>
-      <text x="-5" y="72">4</text>
-      <text x="-5" y="91">5</text>
-      <text x="-5" y="110">6</text>
-      <text x="-5" y="129">7</text>
-      <text x="-5" y="148">8</text>
-    </g>
-
-    <!-- JSON Structure -->
-    <!-- Line 1 -->
-    <text x="15" y="15" class="bracket-color">{</text>
+  <!-- COLUMN 1: Terminal Console Logs (Left) -->
+  <g class="font-code" font-size="12" fill="#94a3b8" transform="translate(25, 65)">
+    <!-- Prompt 1 -->
+    <text x="0" y="15" fill="#38bdf8">yuda@system:~$</text>
+    <text x="110" y="15" fill="#f8fafc">init_profile</text>
     
-    <!-- Line 2 -->
-    <text x="35" y="34">
-      <tspan class="key">"name"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Kusmayuda"</tspan><tspan class="punctuation">,</tspan>
-    </text>
+    <!-- Logs -->
+    <text x="10" y="35" fill="#64748b">[OK] <tspan fill="#34d399">loaded core system modules</tspan></text>
+    <text x="10" y="55" fill="#64748b">[OK] <tspan fill="#34d399">established network connections</tspan></text>
 
-    <!-- Line 3 -->
-    <text x="35" y="53">
-      <tspan class="key">"role"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Web Developer"</tspan><tspan class="punctuation">,</tspan>
-    </text>
-
-    <!-- Line 4 -->
-    <text x="35" y="72">
-      <tspan class="key">"status"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Crafting modern web apps"</tspan><tspan class="punctuation">,</tspan>
-    </text>
-
-    <!-- Line 5 -->
-    <text x="35" y="91">
-      <tspan class="key">"location"</tspan><tspan class="punctuation">:</tspan> <tspan class="string">"Indonesia"</tspan><tspan class="punctuation">,</tspan>
-    </text>
-
-    <!-- Line 6 -->
-    <text x="35" y="110">
-      <tspan class="key">"skills"</tspan><tspan class="punctuation">:</tspan> <tspan class="bracket-color">[</tspan><tspan class="string">"JS"</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"React"</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"Node.js"</tspan><tspan class="punctuation">,</tspan> <tspan class="string">"CSS"</tspan><tspan class="bracket-color">]</tspan><tspan class="punctuation">,</tspan>
-    </text>
-
-    <!-- Line 7 -->
-    <text x="35" y="129">
-      <tspan class="key">"openToWork"</tspan><tspan class="punctuation">:</tspan> <tspan class="number">true</tspan>
-    </text>
-
-    <!-- Line 8 -->
-    <text x="15" y="148" class="bracket-color">}</text>
+    <!-- Prompt 2 -->
+    <text x="0" y="80" fill="#38bdf8">yuda@system:~$</text>
+    <text x="110" y="80" fill="#f8fafc">npm run develop</text>
+    
+    <!-- Active Status Output -->
+    <text x="10" y="100" fill="#ec4899">&gt; status: active_coding</text>
+    <text x="10" y="120" fill="#64748b">&gt; ready to build the web_</text>
+    
+    <!-- Flashing terminal cursor -->
+    <rect class="term-cursor" x="198" y="109" width="7" height="12" fill="#94a3b8" />
   </g>
 
-  <!-- Live Status Badge on Bottom Right -->
-  <g transform="translate(360, 195)">
-    <rect width="115" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1" />
-    <circle cx="18" cy="14" r="4.5" class="status-dot" />
-    <text x="30" y="18" fill="#94a3b8" class="font-outfit" font-weight="600" font-size="10" letter-spacing="0.5">ACTIVE WORKER</text>
+  <!-- Vertical Divider (HUD style dashed line) -->
+  <line x1="310" y1="50" x2="310" y2="210" stroke="#1e293b" stroke-dasharray="4 6" stroke-width="1.5" />
+
+  <!-- COLUMN 2: System Monitor Visualizers (Right) -->
+  <g transform="translate(325, 55)">
+    <!-- Box Title -->
+    <text x="10" y="15" fill="#4b5563" class="font-code" font-size="9" letter-spacing="1">SYSTEM_METRICS</text>
+    
+    <!-- CPU Bouncing Equalizer Bars -->
+    <g transform="translate(10, 10)">
+      <rect class="bar-1" x="0" y="120" width="8" height="40" rx="3" fill="#06b6d4" filter="url(#neonBlue)" />
+      <rect class="bar-2" x="14" y="110" width="8" height="50" rx="3" fill="#3b82f6" />
+      <rect class="bar-3" x="28" y="125" width="8" height="35" rx="3" fill="#8b5cf6" />
+      <rect class="bar-4" x="42" y="100" width="8" height="60" rx="3" fill="#a855f7" />
+      <rect class="bar-5" x="56" y="115" width="8" height="45" rx="3" fill="#ec4899" filter="url(#neonPink)" />
+    </g>
+
+    <!-- Scrolling Oscillation Waveform -->
+    <g transform="translate(10, 95)" opacity="0.6">
+      <path d="M 0,20 Q 15,5 30,20 T 60,20 T 90,20 T 120,20" fill="none" stroke="#06b6d4" stroke-width="1.5" class="wave-line" />
+      <text x="0" y="-5" fill="#4b5563" class="font-code" font-size="8">OSCILLOSCOPE: OK</text>
+    </g>
+
+    <!-- Activity Indicator Gauge / System Info -->
+    <g transform="translate(10, 142)">
+      <rect width="130" height="24" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+      <!-- Pulsing Node -->
+      <circle cx="15" cy="12" r="4.5" class="health-node" />
+      <!-- System status text -->
+      <text x="28" y="15" fill="#64748b" class="font-outfit" font-weight="600" font-size="9" letter-spacing="0.5">CPU LOAD: OPTIMAL</text>
+    </g>
   </g>
 </svg>

@@ -1,17 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 360" width="100%" height="100%">
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0f1d" />
-      <stop offset="50%" stop-color="#070b19" />
-      <stop offset="100%" stop-color="#02040a" />
+      <stop offset="0%" stop-color="#030712" />
+      <stop offset="50%" stop-color="#0c0a1c" />
+      <stop offset="100%" stop-color="#020408" />
     </linearGradient>
 
-    <!-- Text Gradient -->
-    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="50%" stop-color="#818cf8" />
-      <stop offset="100%" stop-color="#c084fc" />
+    <!-- Text Metallic Neon Gradient -->
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />  <!-- Cyan -->
+      <stop offset="40%" stop-color="#3b82f6" /> <!-- Blue -->
+      <stop offset="70%" stop-color="#a855f7" /> <!-- Purple -->
+      <stop offset="100%" stop-color="#ec4899" /> <!-- Pink -->
     </linearGradient>
 
     <!-- Glowing effect -->
@@ -23,226 +24,301 @@
       </feMerge>
     </filter>
     <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feGaussianBlur stdDeviation="40" result="blur" />
     </filter>
   </defs>
 
   <style>
     <![CDATA[
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500;700&display=swap');
     
     .font-outfit { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
     .font-code { font-family: 'Fira Code', monospace; }
 
-    /* Keyframe Animations */
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(3deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
-
-    @keyframes float-reverse {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(8px) rotate(-3deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
-
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.15; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(1.1); }
-    }
-
-    /* Subtitle Rotator */
-    @keyframes phrase1 {
-      0%, 30% { opacity: 1; }
-      33%, 100% { opacity: 0; }
-    }
-    @keyframes phrase2 {
-      0%, 33% { opacity: 0; }
-      36%, 66% { opacity: 1; }
-      69%, 100% { opacity: 0; }
-    }
-    @keyframes phrase3 {
-      0%, 69% { opacity: 0; }
-      72%, 96% { opacity: 1; }
-      99%, 100% { opacity: 0; }
-    }
-
-    /* Individual element animations */
-    .floating-1 { animation: float 6s ease-in-out infinite; transform-origin: center; }
-    .floating-2 { animation: float-reverse 8s ease-in-out infinite; transform-origin: center; }
-    .pulse-glow1 { animation: glowPulse 8s ease-in-out infinite; transform-origin: 200px 100px; }
-    .pulse-glow2 { animation: glowPulse 10s ease-in-out infinite; transform-origin: 650px 220px; }
-
-    /* Subtitle phrases styling & sequential display */
-    .phrase {
-      animation-duration: 12s;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease-in-out;
-    }
-    .p1 { animation-name: phrase1; }
-    .p2 { animation-name: phrase2; }
-    .p3 { animation-name: phrase3; }
-
-    .cursor {
-      animation: cursorBlink 0.8s infinite;
-    }
-    @keyframes cursorBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    
-    /* Grid background movement */
-    @keyframes gridMove {
+    /* HUD Lines & Grid animations */
+    @keyframes gridScroll {
       0% { transform: translateY(0); }
       100% { transform: translateY(40px); }
     }
-    .grid-lines {
-      stroke: #1e293b;
+    .grid-overlay {
+      stroke: #1e1b4b;
       stroke-width: 1;
-      opacity: 0.25;
-      animation: gridMove 12s linear infinite;
+      opacity: 0.3;
+      animation: gridScroll 10s linear infinite;
     }
 
-    /* Pure CSS clip-path scaling and cursor translations */
-    @keyframes scale1 {
+    /* Ambient Glowing Blobs */
+    @keyframes blobMove1 {
+      0%, 100% { cx: 200px; cy: 120px; opacity: 0.25; }
+      50% { cx: 250px; cy: 150px; opacity: 0.4; }
+    }
+    @keyframes blobMove2 {
+      0%, 100% { cx: 650px; cy: 240px; opacity: 0.2; }
+      50% { cx: 600px; cy: 200px; opacity: 0.35; }
+    }
+    .blob-1 { animation: blobMove1 12s ease-in-out infinite; }
+    .blob-2 { animation: blobMove2 10s ease-in-out infinite; }
+
+    /* Neural network data links */
+    @keyframes dataStream {
+      to { stroke-dashoffset: -40; }
+    }
+    .data-link {
+      stroke: #38bdf8;
+      stroke-width: 1;
+      stroke-dasharray: 6 10;
+      opacity: 0.25;
+      animation: dataStream 4s linear infinite;
+    }
+    .data-link-pink {
+      stroke: #f472b6;
+      stroke-width: 1;
+      stroke-dasharray: 6 10;
+      opacity: 0.25;
+      animation: dataStream 5s linear infinite reverse;
+    }
+
+    /* Node pulsing */
+    @keyframes pulseNode {
+      0%, 100% { r: 3px; fill: #38bdf8; opacity: 0.5; }
+      50% { r: 5px; fill: #ec4899; opacity: 0.9; filter: drop-shadow(0 0 3px #ec4899); }
+    }
+    .node { animation: pulseNode 3s infinite ease-in-out; }
+    .node-delay1 { animation-delay: 1s; }
+    .node-delay2 { animation-delay: 2s; }
+
+    /* HUD elements rotating */
+    @keyframes rotateHUD {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .hud-spinner {
+      transform-origin: 750px 80px;
+      animation: rotateHUD 20s linear infinite;
+    }
+    .hud-spinner-reverse {
+      transform-origin: 100px 280px;
+      animation: rotateHUD 25s linear infinite reverse;
+    }
+
+    /* Subtitle Rotator via CSS scaleX */
+    @keyframes scaleText1 {
       0%, 100% { transform: scaleX(0); }
       10%, 27.5% { transform: scaleX(1); }
       30% { transform: scaleX(0); }
     }
-    @keyframes cursor1 {
+    @keyframes cursorX1 {
       0%, 100% { transform: translateX(0); }
-      10%, 27.5% { transform: translateX(165px); }
+      10%, 27.5% { transform: translateX(180px); }
       30% { transform: translateX(0); }
     }
     #clipRect1 {
-      animation: scale1 12s infinite ease-in-out;
-      transform-origin: 0px 190px;
+      animation: scaleText1 12s infinite ease-in-out;
+      transform-origin: 0px 225px;
     }
     #cursor1 {
-      animation: cursor1 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+      animation: cursorX1 12s infinite ease-in-out, cursorBlink 0.8s infinite;
     }
 
-    @keyframes scale2 {
+    @keyframes scaleText2 {
       0%, 33.3%, 100% { transform: scaleX(0); }
       43.3%, 60.8% { transform: scaleX(1); }
       63.3% { transform: scaleX(0); }
     }
-    @keyframes cursor2 {
+    @keyframes cursorX2 {
       0%, 33.3%, 100% { transform: translateX(0); }
-      43.3%, 60.8% { transform: translateX(230px); }
+      43.3%, 60.8% { transform: translateX(235px); }
       63.3% { transform: translateX(0); }
     }
     #clipRect2 {
-      animation: scale2 12s infinite ease-in-out;
-      transform-origin: 0px 190px;
+      animation: scaleText2 12s infinite ease-in-out;
+      transform-origin: 0px 225px;
     }
     #cursor2 {
-      animation: cursor2 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+      animation: cursorX2 12s infinite ease-in-out, cursorBlink 0.8s infinite;
     }
 
-    @keyframes scale3 {
+    @keyframes scaleText3 {
       0%, 66.6%, 100% { transform: scaleX(0); }
       76.6%, 94.1% { transform: scaleX(1); }
       96.6% { transform: scaleX(0); }
     }
-    @keyframes cursor3 {
+    @keyframes cursorX3 {
       0%, 66.6%, 100% { transform: translateX(0); }
-      76.6%, 94.1% { transform: translateX(180px); }
+      76.6%, 94.1% { transform: translateX(170px); }
       96.6% { transform: translateX(0); }
     }
     #clipRect3 {
-      animation: scale3 12s infinite ease-in-out;
-      transform-origin: 0px 190px;
+      animation: scaleText3 12s infinite ease-in-out;
+      transform-origin: 0px 225px;
     }
     #cursor3 {
-      animation: cursor3 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+      animation: cursorX3 12s infinite ease-in-out, cursorBlink 0.8s infinite;
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Subtle float for centerpiece */
+    @keyframes centerFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .center-card {
+      animation: centerFloat 6s ease-in-out infinite;
+    }
+
+    /* Floating shapes */
+    @keyframes shapeFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+      50% { transform: translateY(-15px) rotate(15deg); opacity: 0.25; }
+    }
+    .floating-shape {
+      animation: shapeFloat 8s ease-in-out infinite;
+      transform-origin: center;
     }
     ]]>
   </style>
 
-  <!-- Background Rect -->
-  <rect width="850" height="320" rx="16" fill="url(#bgGrad)" />
+  <!-- Background -->
+  <rect width="850" height="360" rx="16" fill="url(#bgGrad)" stroke="#1e1b4b" stroke-width="1.5" />
 
-  <!-- Grid Pattern Overlay -->
-  <g class="grid-lines">
-    <!-- horizontal grid lines moving -->
-    <path d="M 0,-40 L 850,-40 M 0,0 L 850,0 M 0,40 L 850,40 M 0,80 L 850,80 M 0,120 L 850,120 M 0,160 L 850,160 M 0,200 L 850,200 M 0,240 L 850,240 M 0,280 L 850,280 M 0,320 L 850,320 M 0,360 L 850,360" />
-    <!-- vertical grid lines -->
-    <path d="M 0,0 L 0,360 M 50,0 L 50,360 M 100,0 L 100,360 M 150,0 L 150,360 M 200,0 L 200,360 M 250,0 L 250,360 M 300,0 L 300,360 M 350,0 L 350,360 M 400,0 L 400,360 M 450,0 L 450,360 M 500,0 L 500,360 M 550,0 L 550,360 M 600,0 L 600,360 M 650,0 L 650,360 M 700,0 L 700,360 M 750,0 L 750,360 M 800,0 L 800,360 M 850,0 L 850,360" />
+  <!-- Animated Grid Overlay -->
+  <g class="grid-overlay">
+    <path d="M 0,-40 L 850,-40 M 0,0 L 850,0 M 0,40 L 850,40 M 0,80 L 850,80 M 0,120 L 850,120 M 0,160 L 850,160 M 0,200 L 850,200 M 0,240 L 850,240 M 0,280 L 850,280 M 0,320 L 850,320 M 0,360 L 850,360 M 0,400 L 850,400" />
+    <path d="M 0,0 L 0,360 M 40,0 L 40,360 M 80,0 L 80,360 M 120,0 L 120,360 M 160,0 L 160,360 M 200,0 L 200,360 M 240,0 L 240,360 M 280,0 L 280,360 M 320,0 L 320,360 M 360,0 L 360,360 M 400,0 L 400,360 M 440,0 L 440,360 M 480,0 L 480,360 M 520,0 L 520,360 M 560,0 L 560,360 M 600,0 L 600,360 M 640,0 L 640,360 M 680,0 L 680,360 M 720,0 L 720,360 M 760,0 L 760,360 M 800,0 L 800,360 M 840,0 L 840,360" />
   </g>
 
-  <!-- Ambient Glowing Blobs -->
-  <circle cx="200" cy="100" r="120" fill="#3b82f6" filter="url(#softGlow)" class="pulse-glow1" />
-  <circle cx="650" cy="220" r="140" fill="#a855f7" filter="url(#softGlow)" class="pulse-glow2" />
+  <!-- Glowing Ambient Blobs -->
+  <circle class="blob-1" cx="200" cy="120" r="130" fill="#3b82f6" filter="url(#softGlow)" />
+  <circle class="blob-2" cx="650" cy="240" r="140" fill="#db2777" filter="url(#softGlow)" />
 
-  <!-- Code Decorators in Background (Floating) -->
-  <g class="floating-1">
-    <text x="80" y="80" fill="#38bdf8" opacity="0.2" class="font-code" font-size="20">const dev = true;</text>
-    <text x="720" y="90" fill="#c084fc" opacity="0.15" class="font-code" font-size="32">{}</text>
+  <!-- Neural Net Left Group -->
+  <g>
+    <path class="data-link" d="M 50,80 L 140,60" />
+    <path class="data-link-pink" d="M 140,60 L 110,130" />
+    <path class="data-link" d="M 50,80 L 110,130" />
+    <path class="data-link-pink" d="M 110,130 L 60,180" />
+    <circle class="node" cx="50" cy="80" r="4" />
+    <circle class="node node-delay1" cx="140" cy="60" r="4" />
+    <circle class="node node-delay2" cx="110" cy="130" r="4" />
+    <circle class="node" cx="60" cy="180" r="4" />
   </g>
-  <g class="floating-2">
-    <text x="710" y="240" fill="#38bdf8" opacity="0.15" class="font-code" font-size="18">{} // developer</text>
-    <text x="120" y="250" fill="#818cf8" opacity="0.2" class="font-code" font-size="26">[]</text>
-    <circle cx="520" cy="70" r="4" fill="#34d399" opacity="0.3" />
-    <circle cx="340" cy="260" r="6" fill="#fbbf24" opacity="0.2" />
+
+  <!-- Neural Net Right Group -->
+  <g>
+    <path class="data-link-pink" d="M 800,200 L 710,180" />
+    <path class="data-link" d="M 710,180 L 750,260" />
+    <path class="data-link-pink" d="M 800,200 L 750,260" />
+    <path class="data-link" d="M 750,260 L 790,300" />
+    <circle class="node node-delay2" cx="800" cy="200" r="4" />
+    <circle class="node" cx="710" cy="180" r="4" />
+    <circle class="node node-delay1" cx="750" cy="260" r="4" />
+    <circle class="node node-delay2" cx="790" cy="300" r="4" />
   </g>
 
-  <!-- Main Content Greeting -->
-  <g transform="translate(80, 0)">
-    <!-- Welcome Label -->
-    <text x="0" y="100" fill="#94a3b8" class="font-outfit" font-weight="600" font-size="16" letter-spacing="2">
-      HELLO WORLD, I'M
-    </text>
+  <!-- Floating Sci-fi Shapes -->
+  <g class="floating-shape" style="animation-delay: -2s;">
+    <polygon points="760,60 775,70 775,90 760,100 745,90 745,70" fill="none" stroke="#a855f7" stroke-width="1.5" />
+  </g>
+  <g class="floating-shape" style="animation-delay: -5s;">
+    <rect x="80" y="240" width="25" height="25" rx="4" fill="none" stroke="#06b6d4" stroke-width="1.5" transform="rotate(15 92 252)" />
+  </g>
 
-    <!-- Name Heading -->
-    <text x="0" y="160" fill="url(#textGrad)" class="font-outfit" font-weight="800" font-size="52" filter="url(#glow)">
-      Kusmayuda
-    </text>
+  <!-- HUD Corner Accents -->
+  <g stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.6">
+    <!-- Top-Left -->
+    <path d="M 20,40 L 20,20 L 40,20" />
+    <!-- Top-Right -->
+    <path d="M 830,40 L 830,20 L 810,20" />
+    <!-- Bottom-Left -->
+    <path d="M 20,320 L 20,340 L 40,340" />
+    <!-- Bottom-Right -->
+    <path d="M 830,320 L 830,340 L 810,340" />
+  </g>
 
-    <!-- Subtitle (Animated Typing) -->
-    <!-- Phase 1: Web Developer -->
-    <g class="phrase p1">
-      <clipPath id="clip1">
-        <rect id="clipRect1" x="0" y="175" width="200" height="45" />
-      </clipPath>
-      <text x="0" y="212" fill="#f8fafc" class="font-code" font-size="20" font-weight="500" clip-path="url(#clip1)">
-        &gt; Web Developer
-      </text>
-      <!-- Cursor 1 -->
-      <rect id="cursor1" x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor" />
-    </g>
+  <!-- HUD Spinner Top-Right -->
+  <g class="hud-spinner" opacity="0.4">
+    <circle cx="750" cy="80" r="25" fill="none" stroke="#3b82f6" stroke-dasharray="10 15" stroke-width="1.5" />
+    <circle cx="750" cy="80" r="18" fill="none" stroke="#06b6d4" stroke-dasharray="45 15" stroke-width="1" />
+  </g>
+  
+  <!-- HUD Spinner Bottom-Left -->
+  <g class="hud-spinner-reverse" opacity="0.4">
+    <circle cx="100" cy="280" r="20" fill="none" stroke="#a855f7" stroke-dasharray="8 8" stroke-width="1.5" />
+  </g>
 
-    <!-- Phase 2: Frontend Architect -->
-    <g class="phrase p2">
-      <clipPath id="clip2">
-        <rect id="clipRect2" x="0" y="175" width="260" height="45" />
-      </clipPath>
-      <text x="0" y="212" fill="#38bdf8" class="font-code" font-size="20" font-weight="500" clip-path="url(#clip2)">
-        &gt; Frontend Architect
-      </text>
-      <!-- Cursor 2 -->
-      <rect id="cursor2" x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor" />
-    </g>
+  <!-- HUD Stats Overlay (Ticking Info Indicators) -->
+  <g fill="#4b5563" class="font-code" font-size="9" opacity="0.7">
+    <text x="35" y="45">SYS_STATUS: ACTIVE</text>
+    <text x="35" y="60">NET_LATENCY: 12MS</text>
+    <text x="735" y="315">LOC: INDONESIA</text>
+    <text x="735" y="330">CORE: V8.3.1</text>
+  </g>
 
-    <!-- Phase 3: Problem Solver -->
-    <g class="phrase p3">
-      <clipPath id="clip3">
-        <rect id="clipRect3" x="0" y="175" width="210" height="45" />
-      </clipPath>
-      <text x="0" y="212" fill="#c084fc" class="font-code" font-size="20" font-weight="500" clip-path="url(#clip3)">
-        &gt; Problem Solver
-      </text>
-      <!-- Cursor 3 -->
-      <rect id="cursor3" x="15" y="192" width="3" height="22" fill="#38bdf8" class="cursor" />
-    </g>
+  <!-- Centerpiece Glassmorphism Card -->
+  <g class="center-card" transform="translate(175, 55)">
+    <!-- Card shadow / Outer Glow -->
+    <rect x="-5" y="-5" width="510" height="260" rx="20" fill="#000" opacity="0.4" filter="url(#glow)" />
     
-    <!-- Short intro description in SVG -->
-    <text x="0" y="255" fill="#64748b" class="font-outfit" font-weight="400" font-size="15">
-      Crafting elegant, accessible, and high-performance digital experiences.
-    </text>
-  </g>
+    <!-- Glass Background -->
+    <rect width="500" height="250" rx="16" fill="#0b0f19" fill-opacity="0.75" stroke="#1e293b" stroke-width="1.5" />
+    
+    <!-- Inner Card Border Accent Line (Cyberpunk corner style) -->
+    <path d="M 15,10 L 485,10" stroke="#334155" stroke-width="1" stroke-opacity="0.5" />
+    <path d="M 490,15 L 490,235" stroke="#334155" stroke-width="1" stroke-opacity="0.5" />
 
-  <!-- Glowing accent border at the bottom -->
-  <rect x="5" y="313" width="840" height="3" rx="1.5" fill="url(#textGrad)" opacity="0.8" filter="url(#glow)" />
+    <!-- HUD Crosshairs inside card -->
+    <path d="M 12,238 L 22,238 M 17,233 L 17,243" stroke="#06b6d4" stroke-width="1" opacity="0.6" />
+    <path d="M 488,12 L 478,12 M 483,7 L 483,17" stroke="#ec4899" stroke-width="1" opacity="0.6" />
+
+    <!-- Profile Text inside card -->
+    <g transform="translate(45, 0)">
+      <!-- Greeting label -->
+      <text x="0" y="80" fill="#94a3b8" class="font-outfit" font-weight="600" font-size="14" letter-spacing="3">
+        SYSTEM.DEVELOPER_PORTAL_
+      </text>
+
+      <!-- Main Name with Neon Gradient Glow -->
+      <text x="0" y="145" fill="url(#neonGrad)" class="font-outfit" font-weight="800" font-size="56" filter="url(#glow)">
+        Kusmayuda
+      </text>
+
+      <!-- Custom CSS Animated Monospace Subtitles -->
+      <!-- Subtitle 1: Web Developer -->
+      <g class="phrase p1">
+        <clipPath id="clip1">
+          <rect id="clipRect1" x="0" y="165" width="200" height="50" />
+        </clipPath>
+        <text x="0" y="198" fill="#f8fafc" class="font-code" font-size="19" font-weight="700" clip-path="url(#clip1)">
+          &gt; [ WEB DEVELOPER ]
+        </text>
+        <rect id="cursor1" x="18" y="180" width="3" height="20" fill="#06b6d4" />
+      </g>
+
+      <!-- Subtitle 2: Frontend Architect -->
+      <g class="phrase p2">
+        <clipPath id="clip2">
+          <rect id="clipRect2" x="0" y="165" width="260" height="50" />
+        </clipPath>
+        <text x="0" y="198" fill="#3b82f6" class="font-code" font-size="19" font-weight="700" clip-path="url(#clip2)">
+          &gt; [ FRONTEND ARCHITECT ]
+        </text>
+        <rect id="cursor2" x="18" y="180" width="3" height="20" fill="#3b82f6" />
+      </g>
+
+      <!-- Subtitle 3: Creative Coder -->
+      <g class="phrase p3">
+        <clipPath id="clip3">
+          <rect id="clipRect3" x="0" y="165" width="200" height="50" />
+        </clipPath>
+        <text x="0" y="198" fill="#ec4899" class="font-code" font-size="19" font-weight="700" clip-path="url(#clip3)">
+          &gt; [ CREATIVE CODER ]
+        </text>
+        <rect id="cursor3" x="18" y="180" width="3" height="20" fill="#ec4899" />
+      </g>
+    </g>
+  </g>
 </svg>
