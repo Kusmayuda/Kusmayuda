@@ -1,10 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 200" width="100%" height="100%">
   <defs>
-    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#000000" />
-      <stop offset="100%" stop-color="#050510" />
-    </linearGradient>
-    <filter id="cg" x="-20%" y="-20%" width="140%" height="140%">
+    <filter id="g">
       <feGaussianBlur stdDeviation="3" result="b" />
       <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
     </filter>
@@ -12,143 +8,71 @@
 
   <style>
     <![CDATA[
-    .fo { font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .fo { font-family: 'Outfit', -apple-system, sans-serif; }
     .fc { font-family: 'Fira Code', 'Consolas', monospace; }
 
-    /* Data Rain Columns falling */
-    @keyframes rain1 { 0% { transform: translateY(-120px); opacity: 0; } 10% { opacity: 0.6; } 90% { opacity: 0.6; } 100% { transform: translateY(240px); opacity: 0; } }
-    @keyframes rain2 { 0% { transform: translateY(-100px); opacity: 0; } 10% { opacity: 0.5; } 90% { opacity: 0.5; } 100% { transform: translateY(220px); opacity: 0; } }
-    .rain-col-1 { animation: rain1 6s linear infinite; }
-    .rain-col-2 { animation: rain2 8s linear infinite; }
-    .rain-col-3 { animation: rain1 7s linear infinite; animation-delay: -3s; }
-    .rain-col-4 { animation: rain2 9s linear infinite; animation-delay: -5s; }
-    .rain-col-5 { animation: rain1 5s linear infinite; animation-delay: -1s; }
-
-    /* Equalizer Bouncing Bars */
-    @keyframes eq1 { 0%, 100% { height: 10px; y: 175px; } 50% { height: 45px; y: 140px; } }
-    @keyframes eq2 { 0%, 100% { height: 40px; y: 145px; } 50% { height: 15px; y: 170px; } }
-    @keyframes eq3 { 0%, 100% { height: 20px; y: 165px; } 50% { height: 52px; y: 133px; } }
-    @keyframes eq4 { 0%, 100% { height: 48px; y: 137px; } 50% { height: 22px; y: 163px; } }
-    @keyframes eq5 { 0%, 100% { height: 18px; y: 167px; } 50% { height: 38px; y: 147px; } }
-
-    .bar-1 { animation: eq1 1.4s infinite ease-in-out; }
-    .bar-2 { animation: eq2 1.8s infinite ease-in-out; }
-    .bar-3 { animation: eq3 1.2s infinite ease-in-out; }
-    .bar-4 { animation: eq4 1.6s infinite ease-in-out; }
-    .bar-5 { animation: eq5 2s infinite ease-in-out; }
-
-    /* Gauge sweep */
-    @keyframes gaugeSweep {
-      from { stroke-dashoffset: 100; }
-      to { stroke-dashoffset: 18; }
+    /* Progress bar fill */
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: 130px; }
     }
-    .gauge-arc {
-      stroke-dasharray: 100;
-      stroke-dashoffset: 100;
-      animation: gaugeSweep 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      transform: rotate(-125deg);
-      transform-origin: 420px 152px;
-    }
+    .progress-fill { animation: fillBar 2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
-    /* Terminal Cursor Blink */
-    @keyframes termBlink { 50% { opacity: 0; } }
-    .t-cursor { animation: termBlink 0.8s step-end infinite; }
+    /* Cursor blink */
+    @keyframes blink { 50% { opacity: 0; } }
+    .cursor { animation: blink 0.8s step-end infinite; }
 
-    /* Subtle Glitch on Status text */
-    @keyframes microGlitch {
-      0%, 92%, 100% { transform: translate(0, 0); }
-      93% { transform: translate(-2px, -1px); }
-      94% { transform: translate(1px, 1px); }
-      95% { transform: translate(-1px, 0px); }
-    }
-    .micro-glitch { animation: microGlitch 4s infinite; }
-
-    /* Pulsing nodes */
-    @keyframes nodePulse {
+    /* Status dot pulse */
+    @keyframes pulse {
       0%, 100% { opacity: 0.4; }
-      50% { opacity: 1; filter: drop-shadow(0 0 3px currentColor); }
+      50% { opacity: 1; filter: drop-shadow(0 0 3px #10b981); }
     }
-    .pulse-node { animation: nodePulse 2s infinite ease-in-out; }
+    .status-pulse { animation: pulse 2s ease-in-out infinite; }
     ]]>
   </style>
 
-  <!-- Background -->
-  <rect width="520" height="280" rx="16" fill="url(#cardBg)" stroke="#1f2937" stroke-width="1" />
+  <!-- Card -->
+  <rect width="460" height="200" rx="14" fill="#050508" stroke="#1f2937" stroke-width="1" />
 
-  <!-- Data Rain Columns (behind everything) -->
-  <g opacity="0.25" class="fc" font-size="9" fill="#06b6d4">
-    <g class="rain-col-1"><text x="340" y="60">0</text><text x="340" y="75">1</text><text x="340" y="90">1</text><text x="340" y="105">0</text><text x="340" y="120">1</text></g>
-    <g class="rain-col-2"><text x="370" y="40">1</text><text x="370" y="55">0</text><text x="370" y="70">0</text><text x="370" y="85">1</text><text x="370" y="100">0</text></g>
-    <g class="rain-col-3"><text x="400" y="70">0</text><text x="400" y="85">1</text><text x="400" y="100">0</text><text x="400" y="115">1</text><text x="400" y="130">1</text></g>
-    <g class="rain-col-4"><text x="430" y="50">1</text><text x="430" y="65">1</text><text x="430" y="80">0</text><text x="430" y="95">0</text><text x="430" y="110">1</text></g>
-    <g class="rain-col-5"><text x="460" y="80">0</text><text x="460" y="95">1</text><text x="460" y="110">1</text><text x="460" y="125">0</text><text x="460" y="140">0</text></g>
+  <!-- Window header -->
+  <rect width="460" height="34" rx="14" fill="#020205" />
+  <rect y="24" width="460" height="10" fill="#020205" />
+  <circle cx="18" cy="17" r="4.5" fill="#ef4444" />
+  <circle cx="34" cy="17" r="4.5" fill="#eab308" />
+  <circle cx="50" cy="17" r="4.5" fill="#22c55e" />
+  <text x="80" y="21" fill="#4b5563" class="fc" font-size="10">kusmayuda ~ terminal</text>
+
+  <!-- Terminal content -->
+  <g class="fc" font-size="11.5" transform="translate(22, 58)">
+    <text x="0" y="12"><tspan fill="#06b6d4">~</tspan> <tspan fill="#6b7280">$</tspan> <tspan fill="#e2e8f0">whoami</tspan></text>
+    <text x="0" y="32" fill="#94a3b8">Kusmayuda - Web Developer</text>
+
+    <text x="0" y="58"><tspan fill="#06b6d4">~</tspan> <tspan fill="#6b7280">$</tspan> <tspan fill="#e2e8f0">cat status.log</tspan></text>
+    <text x="0" y="78" fill="#94a3b8">Building modern web applications</text>
+    <text x="0" y="98" fill="#94a3b8">with React, Next.js, and Node.js</text>
+
+    <text x="0" y="124"><tspan fill="#06b6d4">~</tspan> <tspan fill="#6b7280">$</tspan> <tspan fill="#e2e8f0">_</tspan></text>
+    <rect class="cursor" x="30" y="113" width="7" height="13" fill="#e2e8f0" />
   </g>
 
-  <!-- Window Header Bar -->
-  <rect width="520" height="38" rx="16" fill="#020205" />
-  <rect y="28" width="520" height="10" fill="#020205" />
+  <!-- Right side: Mini gauge -->
+  <g transform="translate(340, 70)">
+    <!-- Progress bar -->
+    <text x="0" y="0" fill="#374151" class="fc" font-size="8" letter-spacing="1">FOCUS</text>
+    <rect x="0" y="8" width="90" height="6" rx="3" fill="#111827" />
+    <rect class="progress-fill" x="0" y="8" width="0" height="6" rx="3" fill="#06b6d4" filter="url(#g)" />
+    <text x="95" y="14" fill="#4b5563" class="fc" font-size="8">90%</text>
 
-  <!-- Window controls -->
-  <circle cx="22" cy="19" r="5.5" fill="#ef4444" />
-  <circle cx="40" cy="19" r="5.5" fill="#eab308" />
-  <circle cx="58" cy="19" r="5.5" fill="#22c55e" />
-
-  <!-- Tab -->
-  <rect x="90" y="8" width="160" height="23" rx="8" fill="#0a0a14" stroke="#1f2937" stroke-width="0.8" />
-  <text x="110" y="24" fill="#6b7280" class="fc" font-size="10">system.monitor</text>
-
-  <!-- Vertical Divider -->
-  <line x1="320" y1="52" x2="320" y2="255" stroke="#111827" stroke-dasharray="4 6" stroke-width="1" />
-
-  <!-- LEFT COLUMN: Terminal Console -->
-  <g class="fc" font-size="11.5" transform="translate(25, 68)">
-    <text x="0" y="15" fill="#06b6d4">yuda@dev:~$</text>
-    <text x="95" y="15" fill="#f8fafc">init_profile</text>
-    
-    <text x="8" y="38" fill="#334155">[<tspan fill="#10b981">OK</tspan>] <tspan fill="#6b7280">loaded modules</tspan></text>
-    <text x="8" y="58" fill="#334155">[<tspan fill="#10b981">OK</tspan>] <tspan fill="#6b7280">connected services</tspan></text>
-    <text x="8" y="78" fill="#334155">[<tspan fill="#10b981">OK</tspan>] <tspan fill="#6b7280">deployed to production</tspan></text>
-
-    <text x="0" y="105" fill="#06b6d4">yuda@dev:~$</text>
-    <text x="95" y="105" fill="#f8fafc">npm run build</text>
-    
-    <g class="micro-glitch">
-      <text x="8" y="128" fill="#ec4899">&gt; mode: production</text>
-    </g>
-    <text x="8" y="148" fill="#334155">&gt; status: <tspan fill="#10b981">compiling...</tspan></text>
-    <text x="8" y="168" fill="#6b7280">&gt; ready in 1.2s_</text>
-    <rect class="t-cursor" x="137" y="157" width="7" height="13" fill="#f8fafc" />
-  </g>
-
-  <!-- RIGHT COLUMN: System Dashboard -->
-  <g transform="translate(335, 55)">
-    <text x="8" y="15" fill="#374151" class="fc" font-size="8" letter-spacing="1.5">METRICS_PANEL</text>
-
-    <!-- CPU Equalizer Bars -->
-    <g transform="translate(8, 18)">
-      <rect class="bar-1" x="0" y="140" width="7" height="45" rx="2.5" fill="#06b6d4" filter="url(#cg)" />
-      <rect class="bar-2" x="12" y="145" width="7" height="40" rx="2.5" fill="#3b82f6" />
-      <rect class="bar-3" x="24" y="133" width="7" height="52" rx="2.5" fill="#6366f1" />
-      <rect class="bar-4" x="36" y="137" width="7" height="48" rx="2.5" fill="#a855f7" />
-      <rect class="bar-5" x="48" y="147" width="7" height="38" rx="2.5" fill="#ec4899" filter="url(#cg)" />
+    <!-- Status -->
+    <g transform="translate(0, 40)">
+      <circle cx="5" cy="5" r="4" fill="#10b981" class="status-pulse" />
+      <text x="15" y="8" fill="#4b5563" class="fc" font-size="8">AVAILABLE</text>
     </g>
 
-    <!-- Circular Performance Gauge -->
-    <g transform="translate(8, 18)">
-      <!-- Background ring -->
-      <circle cx="85" cy="134" r="16" fill="none" stroke="#111827" stroke-width="3" />
-      <!-- Animated progress arc -->
-      <circle class="gauge-arc" cx="420" cy="152" r="16" fill="none" stroke="#06b6d4" stroke-width="3.5" stroke-linecap="round" filter="url(#cg)" />
-      <!-- Center percentage -->
-      <text x="85" y="138" fill="#06b6d4" class="fc" font-size="10" font-weight="700" text-anchor="middle">82%</text>
-      <text x="85" y="114" fill="#374151" class="fc" font-size="7" text-anchor="middle">UPTIME</text>
-    </g>
-
-    <!-- System Health Indicator Pill -->
-    <g transform="translate(8, 188)">
-      <rect width="145" height="26" rx="13" fill="#020205" stroke="#111827" stroke-width="1" />
-      <circle cx="16" cy="13" r="4" fill="#10b981" class="pulse-node" />
-      <text x="28" y="16" fill="#4b5563" class="fo" font-weight="600" font-size="8.5" letter-spacing="0.5">SYS_LOAD: OPTIMAL</text>
+    <!-- Uptime -->
+    <g transform="translate(0, 65)">
+      <text x="0" y="0" fill="#374151" class="fc" font-size="8" letter-spacing="1">UPTIME</text>
+      <text x="0" y="15" fill="#6b7280" class="fc" font-size="12">99.9%</text>
     </g>
   </g>
 </svg>
