@@ -59,13 +59,13 @@ I'm a **Web Developer** based in Indonesia who builds modern, high-performance w
 ### GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Kusmayuda&show_icons=true&theme=tokyonight&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=8b5cf6&border_color=1f2937&count_private=true&hide_border=false" alt="GitHub Stats" height="180" />
+  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=Kusmayuda&show_icons=true&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=8b5cf6&border_color=1f2937&count_private=true" alt="GitHub Stats" height="180" />
   &nbsp;&nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Kusmayuda&layout=compact&theme=tokyonight&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=8b5cf6&border_color=1f2937&hide_border=false" alt="Top Languages" height="180" />
+  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=Kusmayuda&layout=compact&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=8b5cf6&border_color=1f2937" alt="Top Languages" height="180" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Kusmayuda&theme=dark&background=020205&ring=8b5cf6&fire=06b6d4&currStreakNum=f8fafc&sideNums=94a3b8&sideLabels=94a3b8&dates=4b5563&stroke=1f2937" alt="GitHub Streak" width="55%" />
+  <img src="https://streak-stats.demolab.com/?user=Kusmayuda&theme=dark&background=020205&ring=8b5cf6&fire=06b6d4&currStreakNum=f8fafc&sideNums=94a3b8&sideLabels=94a3b8&dates=4b5563&stroke=1f2937" alt="GitHub Streak" width="55%" />
 </p>
 
 <br>
