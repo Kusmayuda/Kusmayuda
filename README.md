@@ -59,9 +59,13 @@ I'm a **Web Developer** based in Indonesia who builds modern, high-performance w
 ### GitHub Stats
 
 <p align="center">
-  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=Kusmayuda&show_icons=true&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=8b5cf6&border_color=1f2937&count_private=true" alt="GitHub Stats" height="180" />
-  &nbsp;&nbsp;
-  <img src="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=Kusmayuda&layout=compact&bg_color=020205&title_color=06b6d4&text_color=94a3b8&icon_color=8b5cf6&border_color=1f2937" alt="Top Languages" height="180" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Kusmayuda&theme=github_dark" alt="GitHub Stats" height="180" />
+  &nbsp;
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Kusmayuda&theme=github_dark" alt="Top Languages" height="180" />
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Kusmayuda&theme=github_dark" alt="Contribution Graph" width="75%" />
 </p>
 
 <p align="center">
