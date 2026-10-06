@@ -1,38 +1,50 @@
-<p align="center">
-  <img src="assets/banner.svg" alt="Kusmayuda" width="100%">
-</p>
+<div align="center">
 
-<p align="center">
-  <a href="https://linkedin.com/in/kusmayuda"><img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
-  <a href="mailto:projectyudaofficial@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>&nbsp;&nbsp;
-  <a href="https://kusmayuda.id"><img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio"></a>
-</p>
+<!-- animated contribution graph: real data, boxes reveal cell by cell
+     (regenerated daily by .github/workflows/update-profile-art.yml) -->
 
-<img src="assets/divider.svg" width="100%">
+<h3><code>kusmayuda@github ~ $ ./contributions.sh</code></h3>
+
+<img src="./contrib-heatmap.svg" width="860" alt="Kusmayuda's GitHub contribution graph — auto-refreshed daily" />
 
 <br>
-
-### About
-
-I'm a **Web Developer** based in Indonesia who builds modern, high-performance web applications. I focus on creating clean architecture and intuitive user experiences with attention to every detail.
-
-<p align="center">
-  <img src="assets/card.svg" alt="Terminal" width="460">
-</p>
-
 <br>
 
-<img src="assets/divider.svg" width="100%">
+<!-- ascii portrait (left) + streak/numbers card (right). both svgs are
+     840x880 so equal widths give equal heights.
+     portrait: python scripts/prep_photo.py <source-photo.png> && python scripts/make_ascii_svg.py
+     stats:    python scripts/render_stats_svg.py (same daily workflow) -->
+
+<h3><code>kusmayuda@github ~ $ whoami</code></h3>
+
+<table>
+<tr>
+<td valign="top"><img src="./kusmayuda-ascii.svg" width="420" alt="Kusmayuda — ASCII portrait" /></td>
+<td valign="top"><img src="./stats.svg" width="420" alt="Kusmayuda's GitHub streak and contribution stats — auto-refreshed daily" /></td>
+</tr>
+</table>
 
 <br>
+<br>
 
-### Tech Stack
+<h3><code>kusmayuda@github ~ $ ./links.sh</code></h3>
+
+<p><b>Web Developer · Frontend & Fullstack Engineer</b></p>
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-kusmayuda.id-0d1117?style=for-the-badge&logo=vercel&logoColor=white)](https://kusmayuda.id)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-kusmayuda-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/kusmayuda)
+[![Email](https://img.shields.io/badge/Email-projectyudaofficial@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:projectyudaofficial@gmail.com)
+
+<br>
+<br>
+
+<h3><code>kusmayuda@github ~ $ ./stack.sh</code></h3>
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
 </p>
 
@@ -52,30 +64,8 @@ I'm a **Web Developer** based in Indonesia who builds modern, high-performance w
 
 <br>
 
-<img src="assets/divider.svg" width="100%">
-
-<br>
-
-### GitHub Stats
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Kusmayuda&theme=github_dark" alt="GitHub Stats" height="180" />
-  &nbsp;
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Kusmayuda&theme=github_dark" alt="Top Languages" height="180" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Kusmayuda&theme=github_dark" alt="Contribution Graph" width="75%" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com/?user=Kusmayuda&theme=dark&background=020205&ring=8b5cf6&fire=06b6d4&currStreakNum=f8fafc&sideNums=94a3b8&sideLabels=94a3b8&dates=4b5563&stroke=1f2937" alt="GitHub Streak" width="55%" />
-</p>
-
-<br>
-
-<img src="assets/divider.svg" width="100%">
-
 <p align="center">
   <sub>Open to collaborations — let's build something great together.</sub>
 </p>
+
+</div>
